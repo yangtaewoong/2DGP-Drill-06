@@ -15,7 +15,7 @@ def arrow_events():
 
 def move_character():
     global x,y,arrow_x, arrow_y
-    speed = 0.1
+    speed = 0.5
     if x < arrow_x:
         x += min(speed, arrow_x - x)
     elif x > arrow_x:
@@ -51,10 +51,9 @@ while running:
     arrow.draw(ax, ay)
     update_canvas()
     frame = (frame + 1) % 8
+
     move_character()
 
 close_canvas()
-
-
 
 
