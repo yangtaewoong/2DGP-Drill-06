@@ -15,21 +15,18 @@ def arrow_events():
 
 def move_character():
     global x,y,arrow_x, arrow_y
-    speed = 0.5
-    if x < arrow_x:
-        x += min(speed, arrow_x - x)
-    elif x > arrow_x:
-        x -= min(speed, x - arrow_x)
+    speed = 0.2
+    dx = arrow_x - x
+    dy = arrow_y - y
+    distance = (dx ** 2 + dy ** 2) ** 0.5
 
-    if y < arrow_y:
-        y += min(speed, arrow_y - y)
-    elif y > arrow_y:
-        y -= min(speed, y - arrow_y)
-
-    if x == arrow_x and y == arrow_y:
-        delay(0.5)
+    if distance < speed:
+        x, y = arrow_x, arrow_y
         arrow_events()
         arrow_x, arrow_y = ax, ay
+    else:
+        x += dx / distance * speed
+        y += dy / distance * speed
 
 
 
